@@ -4,32 +4,14 @@ import numpy  as np
 import matplotlib.pyplot as pt
 import requests
 
-json_data_url = requests.get('https://api.covid19india.org/raw_data.json')
-json_file = open('D:\\MCA LATEST FILES\\CAP776 PROGRAMMING IN PYTHON\\rawjson.json','w')
-json_file.write(str(json_data_url.text))
-json_file.close()
+response=url.urlopen("https://api.covid19india.org/raw_data.json")
 
-inputFile = open('D:\\MCA LATEST FILES\\CAP776 PROGRAMMING IN PYTHON\\rawjson.json') 
-outputFile = open('D:\\MCA LATEST FILES\\CAP776 PROGRAMMING IN PYTHON\\covidcsv.csv','w') 
-data = json.load(inputFile)
-inputFile.close()
+temp_data=json.load(response)
 
-# WRITE INTO CSV FILE
-output = csv.writer(outputFile)
-output.writerow(data['raw_data'][0].keys())
-for row in data['raw_data']:
-    output.writerow(row.values())
-    
-#CONVVERT CSV FILE INTO EXCEL
-read_file = pd.read_csv (r'D:\\MCA LATEST FILES\\CAP776 PROGRAMMING IN PYTHON\\covidcsv.csv',encoding="cp1252")
-read_file.to_excel (r'D:\\MCA LATEST FILES\\CAP776 PROGRAMMING IN PYTHON\\covidexcel.xlsx', index = None, header=True)
-
+file=pd.DataFrame(temp_data["raw_data"])
 print('NOVEL COVID 19 DATASET  :')
-
-#READ EXCEL FILE AND SHOWING IT INTO GRAPH VISUALIZATION OUTPUT 
-file=pd.read_excel('D:\\MCA LATEST FILES\\CAP776 PROGRAMMING IN PYTHON\\covidexcel.xlsx')
 file.fillna("undefined", inplace = True) 
-
+print()
 # THERE ARE THE FOLLOWING GRAPHS WITH THE VISUALIZATION OUTPUT :
 
 # 1) PIE CHART
