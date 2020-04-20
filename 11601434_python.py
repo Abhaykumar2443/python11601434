@@ -1,7 +1,13 @@
 import csv, json
+
 import pandas as pd
+
 import numpy  as np
+
+import urllib.request as url
+
 import matplotlib.pyplot as pt
+
 import requests
 
 response=url.urlopen("https://api.covid19india.org/raw_data.json")
@@ -9,9 +15,15 @@ response=url.urlopen("https://api.covid19india.org/raw_data.json")
 temp_data=json.load(response)
 
 file=pd.DataFrame(temp_data["raw_data"])
-print('NOVEL COVID 19 DATASET  :')
+
+
+
+print('NOVEL COVID 19 DATA SET :')
+
 print()
+
 file.fillna("undefined", inplace = True) 
+
 
 # THERE ARE THE FOLLOWING GRAPHS WITH THE VISUALIZATION OUTPUT :
 
