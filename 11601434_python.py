@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# CAP776/11601434
-
-# In[30]:
-
-
 import csv, json
 import pandas as pd
 import numpy  as np
