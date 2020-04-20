@@ -10,8 +10,9 @@ temp_data=json.load(response)
 
 file=pd.DataFrame(temp_data["raw_data"])
 print('NOVEL COVID 19 DATASET  :')
-file.fillna("undefined", inplace = True) 
 print()
+file.fillna("undefined", inplace = True) 
+
 # THERE ARE THE FOLLOWING GRAPHS WITH THE VISUALIZATION OUTPUT :
 
 # 1) PIE CHART
